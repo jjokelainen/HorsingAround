@@ -10,8 +10,8 @@ public class HorseRun : MonoBehaviour
     [SerializeField] private float fallingVelocityMinThreshold = 0.3f;
     [SerializeField] private float fallingVelocityMaxThreshold = 1f;
     
-    [SerializeField] private Collider2D frontCollider;
-    [SerializeField] private Collider2D bottomCollider;
+    [SerializeField] private CustomTriggerBox frontTrigger;
+    [SerializeField] private CustomTriggerBox bottomTrigger;
     public UnityEvent JumpEvent;
     public UnityEvent GroundedEvent;
     public UnityEvent FallingEvent;   
@@ -29,8 +29,8 @@ public class HorseRun : MonoBehaviour
     private void FixedUpdate() 
     {  
         bool was_grounded = grounded;
-        blocked = frontCollider.IsTouchingLayers();
-        grounded = bottomCollider.IsTouchingLayers();
+        blocked = frontTrigger.IsTouchingLayers();
+        grounded = bottomTrigger.IsTouchingLayers();
 
         animator.SetBool("Grounded",grounded);
         if(IsFalling())
