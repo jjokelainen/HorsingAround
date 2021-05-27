@@ -36,6 +36,7 @@ public class HorseRun : MonoBehaviour
         if(IsFalling())
         {
             FallingEvent.Invoke();    
+            Debug.Log("Falling");
         }
 
         if(!was_grounded && grounded)
@@ -69,6 +70,6 @@ public class HorseRun : MonoBehaviour
 
     public bool IsFalling()
     {
-        return -rb.velocity.y > fallingVelocityMinThreshold && rb.velocity.y < fallingVelocityMaxThreshold;
+        return (-rb.velocity.y > fallingVelocityMinThreshold && rb.velocity.y < fallingVelocityMaxThreshold);
     }
 }
